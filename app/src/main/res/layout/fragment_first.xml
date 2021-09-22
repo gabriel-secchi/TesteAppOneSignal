@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".FirstFragment">
+
+    <Button
+        android:id="@+id/btn_set_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Setar ID externo" />
+
+    <Button
+        android:id="@+id/btn_del_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Remover ID externo" />
+
+    <Button
+        android:id="@+id/btn_add_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Adicionar tag" />
+
+    <Button
+        android:id="@+id/btn_del_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Remover tag" />
+
+    <Button
+        android:id="@+id/btn_disable_push"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Desativar push" />
+
+    <Button
+        android:id="@+id/btn_enable_push"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ativar push" />
+</LinearLayout>
