@@ -21,17 +21,12 @@ class OneSignalHandler(application: MyApplication) {
     }
 
     private fun addNotificationOpenedHandle() {
+        OneSignal.setNotificationOpenedHandler { notificationResult ->
 
-        OneSignal.setNotificationOpenedHandler {notificationResult ->
-
-            notificationResult.notification?.let { notification ->
-
-                notification.additionalData?.let { jsonAdditionalData ->
-
-                    if (jsonAdditionalData.has("product_id")) {
-                        val productId = jsonAdditionalData.getString("product_id")
-                        addGoToSecondFragment(productId)
-                    }
+            notificationResult.notification?.additionalData?.let { jsonAdditionalData ->
+                if (jsonAdditionalData.has("product_id")) {
+                    val productId = jsonAdditionalData.getString("product_id")
+                    addGoToSecondFragment(productId)
                 }
             }
 
