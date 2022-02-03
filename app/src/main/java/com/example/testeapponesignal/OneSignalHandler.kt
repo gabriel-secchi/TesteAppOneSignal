@@ -1,55 +1,46 @@
 package com.example.testeapponesignal
 
-import android.content.Intent
+import android.app.Application
 import com.onesignal.OneSignal
 
-class OneSignalHandler(application: MyApplication) {
+class OneSignalHandler(application: Application) {
 
-    private val app: MyApplication by lazy {
+    private val app: Application by lazy {
         application
     }
 
-    private var handler: Runnable? = null
-
-    fun instanceOf() {
+    fun configure() {
+        //Seta o nível de log para debug e para release
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
 
+        //Inicia a instancia do onsignal
         OneSignal.initWithContext(app)
+        //Seta a chave do app onesignal (Este que configuramos no module: build.gradle)
         OneSignal.setAppId(BuildConfig.ONESIGNAL_APP_ID)
-        OneSignal.unsubscribeWhenNotificationsAreDisabled(true)
+
+        //Adiciona manipulador para quando a push for clicada
         addNotificationOpenedHandle()
     }
 
     private fun addNotificationOpenedHandle() {
+        //manipulador de quando a push for clicada
         OneSignal.setNotificationOpenedHandler { notificationResult ->
 
+            //Desta forma analisamos a push que foi clicada e verificamos se ela possui alguma informação adicional
             notificationResult.notification?.additionalData?.let { jsonAdditionalData ->
+
+                //Aqui verificamos se dentro das informações adicionar existe uma propriedade "product_id"
                 if (jsonAdditionalData.has("product_id")) {
+
+                    //Desta forma obtemos o valor da informação adicional
                     val productId = jsonAdditionalData.getString("product_id")
-                    addGoToSecondFragment(productId)
+
+                    /*
+                    ...
+                    A partir daqui você pode fazer qualquer coisa com essas informações
+                    */
                 }
             }
-
-            val intent = Intent(Intent(app, MainActivity::class.java))
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            app.applicationContext.startActivity(intent)
         }
     }
-
-    private fun addGoToSecondFragment(productId: String) {
-        handler = Runnable {
-            try {
-                FirstFragment.instance?.goToSecondFragment(productId)
-            } catch (error: Exception) {
-                error.printStackTrace()
-            }
-        }
-    }
-
-
-    fun runPendingHandlers() {
-        handler?.run()
-        handler = null
-    }
-
 }

@@ -87,28 +87,4 @@ class FirstFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        instance = this
-        oneSignalHandler.runPendingHandlers()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        instance = null
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        instance = null
-        _binding = null
-    }
-
-    fun goToSecondFragment(productId: String) {
-        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-    }
-
-    companion object {
-        var instance: FirstFragment? = null
-    }
 }
