@@ -12,8 +12,8 @@ Este é uma projeto de exemplo que visa fazer a integração com a olataforma [O
 Neste exemplo é abordado somente as pushs notifications.
 
 ## Documentação
-(OneSignal)[https://documentation.onesignal.com/docs/android-sdk-setup]
-(REST API)[https://documentation.onesignal.com/reference/create-notification#formatting-filters]
+[OneSignal](https://documentation.onesignal.com/docs/android-sdk-setup)
+[REST API](https://documentation.onesignal.com/reference/create-notification#formatting-filters)
 
 ### Ajustes do projeto
 - Estou levando em consideração que você já leu a documentação e já pussui os projetos criados dentro do [Firebase](https://firebase.google.com/) e do [OnSignal](https://onesignal.com/).<br>
